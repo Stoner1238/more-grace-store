@@ -47,3 +47,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+const products = [
+  { id: 1, name: "Mop & stick", price: 1000, image: "images/plastic bucket.jpg" },
+  { id: 2, name: "Mop & Bucketmop", price: 500, image: "images/plastic plate.jpg" },
+  { id: 3, name: "original mop", price: 200, image: "images/plastic spoon.jpg" },
+  { id: 4, name: "Original mop", price: 3000, image: "images/kitchen-utensils.jpg" }
+];
+
+const productList = document.getElementById('product-list');
+
+products.forEach(product => {
+  const productCard = `
+    <div class="product">
+      <img src="${product.image}" alt="${product.name}" class="product-image">
+      <h3>${product.name}</h3>
+      <p>Price: ₦${product.price}</p>
+      <button onclick="addToCart(${product.id})">Add to Cart</button>
+    </div>
+  `;
+  productList.innerHTML += productCard;
+});
+
+function addToCart(productId) {
+  const product = products.find(p => p.id === productId);
+  alert(`${product.name} added to cart!`);
+}
