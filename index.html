@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>More Grace & Blessing Nigeria Enterprise</title>
   <link rel="stylesheet" href="style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
   <header>
@@ -13,49 +12,14 @@
     <nav>
       <a href="index.html">Home</a>
       <a href="cart.html">Cart</a>
+      <a href="contact.html">Contact Us</a>
     </nav>
   </header>
 
   <main>
     <input type="text" id="search-bar" placeholder="Search products...">
     <h2>Our Products</h2>
-    <div class="product-grid">
-      <!-- Product 1 -->
-      <div class="product">
-        <h3>Plastic Bucket</h3>
-        <p>Price: ₦1000</p>
-        <button class="add-to-cart" data-name="Plastic Bucket" data-price="1000">
-          Add to Cart
-        </button>
-      </div>
-
-      <!-- Product 2 -->
-      <div class="product">
-        <h3>Plastic Plate</h3>
-        <p>Price: ₦500</p>
-        <button class="add-to-cart" data-name="Plastic Plate" data-price="500">
-          Add to Cart
-        </button>
-      </div>
-
-      <!-- Product 3 -->
-      <div class="product">
-        <h3>Plastic Spoon</h3>
-        <p>Price: ₦200</p>
-        <button class="add-to-cart" data-name="Plastic Spoon" data-price="200">
-          Add to Cart
-        </button>
-      </div>
-
-      <!-- Product 4 -->
-      <div class="product">
-        <h3>Kitchen Utensils Set</h3>
-        <p>Price: ₦3000</p>
-        <button class="add-to-cart" data-name="Kitchen Utensils Set" data-price="3000">
-          Add to Cart
-        </button>
-      </div>
-    </div>
+    <div id="product-list" class="product-grid"></div> <!-- Dynamic product rendering section -->
   </main>
 
   <script src="app.js"></script>
