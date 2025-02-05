@@ -106,3 +106,10 @@ function initiatePayment() {
 
   handler.openIframe();
 }
+document.getElementById('search-bar').addEventListener('input', function () {
+  const searchTerm = this.value.toLowerCase();
+  const filteredProducts = products.filter(product => 
+    product.name.toLowerCase().includes(searchTerm)
+  );
+  displayProducts(filteredProducts);
+});
