@@ -2,7 +2,7 @@
 let cart = [];
 
 // Function to add item to cart
-function addToCart(productName, productPrice) {
+function addToCart(productId, productName, productPrice) {
   // Check if the product already exists in the cart
   const existingProduct = cart.find(item => item.name === productName);
 
@@ -12,6 +12,7 @@ function addToCart(productName, productPrice) {
   } else {
     // Add new item to the cart
     cart.push({
+      id: productId,
       name: productName,
       price: productPrice,
       quantity: 1
@@ -35,25 +36,13 @@ function loadCart() {
   }
 }
 
-// Event listeners for "Add to Cart" buttons
-document.addEventListener('DOMContentLoaded', () => {
-  loadCart();
-  const cartButtons = document.querySelectorAll('.add-to-cart');
-  cartButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const name = button.dataset.name;
-      const price = parseInt(button.dataset.price);
-      addToCart(name, price);
-    });
-  });
-});
+// Render products dynamically
 const products = [
-  { id: 1, name: "Mop & stick", price: 1000, image: "images/plastic bucket.jpg" },
+  { id: 1, name: "Mop & Stick", price: 1000, image: "images/plastic bucket.jpg" },
   { id: 2, name: "Mop & Bucketmop", price: 500, image: "images/plastic plate.jpg" },
-  { id: 3, name: "original mop", price: 200, image: "images/plastic spoon.jpg" },
-  { id: 4, name: "Original mop", price: 3000, image: "images/kitchen-utensils.jpg" }
+  { id: 3, name: "Original Mop", price: 200, image: "images/plastic spoon.jpg" },
+  { id: 4, name: "Moping stick", price: 3000, image: "images/kitchen utensils.jpg" }
 ];
-
 const productList = document.getElementById('product-list');
 
 products.forEach(product => {
@@ -62,13 +51,25 @@ products.forEach(product => {
       <img src="${product.image}" alt="${product.name}" class="product-image">
       <h3>${product.name}</h3>
       <p>Price: ₦${product.price}</p>
-      <button onclick="addToCart(${product.id})">Add to Cart</button>
+      <button class="add-to-cart" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}">
+        Add to Cart
+      </button>
     </div>
   `;
   productList.innerHTML += productCard;
 });
 
-function addToCart(productId) {
-  const product = products.find(p => p.id === productId);
-  alert(`${product.name} added to cart!`);
-}
+// Event listeners for "Add to Cart" buttons
+document.addEventListener('DOMContentLoaded', () => {
+  loadCart();
+
+  const cartButtons = document.querySelectorAll('.add-to-cart');
+  cartButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const productId = button.dataset.id;
+      const productName = button.dataset.name;
+      const productPrice = parseInt(button.dataset.price);
+      addToCart(productId, productName, productPrice);
+    });
+  });
+});
