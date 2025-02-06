@@ -1,12 +1,8 @@
 // Cart storage and display
 let cart = [];
 
-// Function to add item to 
-function addToCart(productId) {
-  const product = products.find(p => p.id === productId);
-  alert(`${product.name} added to cart!`);
-}
-
+// Function to add item to cart
+function addToCart(productName, productPrice) {
   // Check if the product already exists in the cart
   const existingProduct = cart.find(item => item.name === productName);
 
@@ -71,3 +67,8 @@ products.forEach(product => {
   `;
   productList.innerHTML += productCard;
 });
+
+function addToCart(productId) {
+  const product = products.find(p => p.id === productId);
+  alert(`${product.name} added to cart!`);
+}
